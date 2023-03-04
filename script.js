@@ -32,6 +32,7 @@ function openModal() {
 
 function closeModal() {
   modal.style.display = 'none';
+  clearForm();
 }
 
 function clearForm() {
@@ -40,7 +41,7 @@ function clearForm() {
 }
 
 function saveBlogPost(event) {
-  event.preventDefault();
+  event.preventDefault();                  
   const title = titleInput.value;
   const description = descriptionInput.value;
   if (title.trim() === '' || description.trim() === '') {
@@ -58,14 +59,14 @@ function saveBlogPost(event) {
 function displayBlogPosts() {
   blogPostsContainer.innerHTML = '';
   blogPosts.forEach((blogPost, index) => {
-    const blogPostElement = document.createElement('div');
-    blogPostElement.classList.add('blog-post');
-    const titleElement = document.createElement('h3');
-    titleElement.textContent = blogPost.title;
-    const descriptionElement = document.createElement('p');
-    descriptionElement.textContent = blogPost.description;
-    const dateTimeElement = document.createElement('p');
-    const dateTimeString = blogPost.dateTime.toLocaleString();
+    const blogPostElement = document.createElement('div');            // a new div element created .
+    blogPostElement.classList.add('blog-post');                       // A newly created div element is added to blog-post div.
+    const titleElement = document.createElement('h3');                // New title element h3 created.
+    titleElement.textContent = blogPost.title;                        // blog post object title is assigned to new title elemnt 
+    const descriptionElement = document.createElement('p');           // New element p is created.
+    descriptionElement.textContent = blogPost.description;            // blog post object description is assigned to new blog.
+    const dateTimeElement = document.createElement('p');              
+    const dateTimeString = blogPost.dateTime.toLocaleString();        // date time value extracted in local time zone
     dateTimeElement.textContent = `Posted on ${dateTimeString}`;
     dateTimeElement.classList.add('dateTime');
     const deleteBtn = document.createElement('button');
